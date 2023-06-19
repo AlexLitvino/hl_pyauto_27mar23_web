@@ -1,3 +1,6 @@
+from web_tests.helpers.resources import Resources
+
+
 def test_successful_login(login_page, valid_user):
     """
     1. Navigate to base url
@@ -16,7 +19,7 @@ def test_locked_out_login(login_page, locked_out_user):
     assert login_page.login_button.is_displayed()
 
     assert login_page.error_message.is_displayed()
-    assert login_page.error_message.text == 'Epic sadface: Sorry, this user has been locked out.'
+    assert login_page.error_message.text == Resources.LoginPage.ERROR_MESSAGE_FOR_LOCKED_OUT_USER + 'Q'
 
     assert login_page.username_error_marker.is_displayed()
     assert login_page.password_error_marker.is_displayed()

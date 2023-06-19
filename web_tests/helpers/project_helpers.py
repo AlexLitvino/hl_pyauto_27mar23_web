@@ -20,3 +20,11 @@ def get_base_url():
 def get_browser_name():
     parser = get_config()
     return parser.get('testing', 'browser_name')
+
+
+def get_screenshot_directory():
+    return get_config().get('testing', 'screenshot-directory')
+
+
+def create_screenshots_directory():
+    os.makedirs(get_screenshot_directory(), exist_ok=True)
